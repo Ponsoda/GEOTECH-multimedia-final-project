@@ -1,0 +1,713 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Ignacio Ponsoda Llorens</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="creative, portfolio, agency, template, theme, designed, html5, html, css3, responsive, apollo, onepage" />
+    <meta name="author" content="nileforest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    
+    <!-- Mapbox -->
+    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" /> <!--link css leaflet-->
+    <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script> <!--link js leaflet-->
+
+    <!-- Css -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="css/plugins/animate.css" rel="stylesheet" type="text/css" />
+
+
+    <style>
+           .demo-variation-inner {
+            max-width: 1815px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media only screen and (min-width: 1024px) {
+            #demopage .intro-title {
+                font-size: 54px;
+            }
+        }
+
+        .nav-menu ul.nav-menu-inner > li > a.buy-now-btn {
+            padding-top: 11px;
+            padding-bottom: 11px;
+            padding-right: 0;
+            padding-left: 0;
+            margin-left: 15px;
+            
+            
+        }
+
+        .buy-now-btn span {
+            color: #fff;
+            border-radius: 50px;
+            padding: 9px 30px !important;
+            border-width: 2px;
+            border-color: rgba(255, 255, 255, 0.70);
+            line-height: 13px;
+            font-weight: 400;
+        }
+
+        .page-title-underline {
+            border-bottom: 3px solid #222;
+        }
+
+        .portfolio-box {
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+            -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+            -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .portfolio-preview-overlay {
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            height: 100%;
+            left: 0;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            transition: all 0.5s ease-in-out 0s;
+            -moz-transition: all 0.5s ease-in-out 0s;
+            -o-transition: all 0.5s ease-in-out 0s;
+            -webkit-transition: all 0.5s ease-in-out 0s;
+            visibility: hidden;
+            width: 100%;
+            z-index: 9;
+        }
+
+        .portfolio-box:hover .portfolio-preview-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .portfolio-preview-overlay-table {
+            display: table;
+            width: 100%;
+            height: 100%;
+        }
+
+        .portfolio-preview-overlay-tb_cell {
+            display: table-cell;
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .portfolio-preview-overlay .preview-link-icon {
+            font-size: 30px;
+        }
+
+        .demo-preview-content {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .demo-preview-content-title {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ribbon {
+            width: 58px;
+            height: 58px;
+            text-align: center;
+            line-height: 58px;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            position: absolute;
+            right: -4px;
+            top: -4px;
+            text-transform: uppercase;
+            color: #fff;
+            font-weight: 600;
+            font-size: 12px;
+            z-index: 15;
+        }
+
+        .new-ribbon {
+            background: rgba(238,45,39,0.95);
+        }
+
+        .update-ribbon {
+            background: rgba(238,189,39,0.95);
+        }
+
+        .label-lg {
+            padding: 4px 10px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #fff;
+            background-color: rgba(238,45,39,1);
+            border-radius: 2px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            vertical-align: middle;
+            
+        }
+
+/*progress bar*/
+        .horizontal .progress-bar {
+  float: left;
+  height: 45px;
+  width: 100%;
+  padding: 12px 0;
+}
+
+.horizontal .progress-track {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  background: #ebebeb;
+}
+
+.horizontal .progress-fill {
+  position: relative;
+  background: rgb(219, 183, 23);
+  height: 20px;
+  color: #fff;
+  text-align: center;
+  font-family: "Lato","Verdana",sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+}
+/*progress bar*/
+/*my stats*/
+.col_half { width: 49%; }
+.col_third { width: 32%; }
+.col_fourth { width: 23.5%; }
+.col_fifth { width: 18.4%; }
+.col_sixth { width: 15%; }
+.col_three_fourth { width: 74.5%;}
+.col_twothird{ width: 66%;}
+.col_half,
+.col_third,
+.col_twothird,
+.col_fourth,
+.col_three_fourth,
+.col_fifth{
+	position: relative;
+	display:inline;
+	display: inline-block;
+	float: left;
+	margin-right: 2%;
+	margin-bottom: 20px;
+}
+.end { margin-right: 0 !important; }
+/* Column Grids End */
+
+.wrapper { width: 980px; margin: 30px auto; position: relative;}
+.counter { background-color: #ffffff; padding: 20px 0; border-radius: 5px;}
+.count-title { font-size: 40px; font-weight: normal;  margin-top: 10px; margin-bottom: 0; text-align: center; }
+.count-text { font-size: 13px; font-weight: normal;  margin-top: 10px; margin-bottom: 0; text-align: center; }
+.fa-2x { margin: 0 auto; float: none; display: table; color: #4ad1e5; }
+/*my stats*/
+#mapid { height: 500px; 
+          width: 100%;
+}
+    </style>
+</head>
+
+
+    <!-- Site preloader -->
+    <section id="preloader">
+        <div class="site-spinner"></div>
+    </section>
+    <!-- End Site preloader -->
+
+    <!-- Page Wraper -->
+    <div id="page-wraper">
+
+        <!-- Header -->
+        <header id="header" class="header header-dark">
+            <div class="header-inner">
+
+                <!-- Logo -->
+                
+                <!-- End Logo -->
+
+                <!-- Mobile Navbar Icon -->
+                <div class="nav-mobile nav-bar-icon">
+                    <span></span>
+                </div>
+                <!-- End Mobile Navbar Icon -->
+
+                <!-- Navbar Navigation -->
+                <div class="nav-menu singlepage-nav" >
+                    <ul class="nav-menu-inner">
+                        <li>
+                           
+                            <a href="#intro"  style="color:white; ">Home </a>
+                               
+                        </li>
+                        <li>
+                            <a href="#intro-variation" style="color:white; ">Profile</a>
+                        </li>
+                        <li>
+                            <a href="#home-variation" style="color:white; ">Work Experience</a>
+                        </li>
+                        <li>
+                            <a href="#header-variation" style="color:white; ">Research</a>
+                        </li>
+                        <li>
+                            <a href="#external-pages" style="color:white; ">Projects</a>
+                        </li>
+
+                        <li>
+                            <a href="#footer" style="color:white; ">Contact</a>
+                        </li>
+
+                       
+                    </ul>
+                </div>
+                <!-- End Navbar Navigation -->
+
+            </div>
+        </header>
+        <!-- End Header -->
+
+
+        <!-- Intro -->
+        <section id="intro" class="intro">
+            <!-- Static Intro -->
+            <div class="bg-image  overlay-dark80 dark-bg parallax parallax-background2" data-background-img="img/fondo.jpg">
+                <div class="js-fullscreen-height container" style="min-height: 400px;">
+                    <div class="intro-content">
+                        <div class="intro-content-inner">
+                            <h5 class="alt-title intro-sub-title" style="color:white; ">Ignacio Ponsoda Llorens</h5>
+                            <h1 class=" intro-title mb-50" style="color:white; "> Everything have a location</h1>
+                            <h5 class="alt-title intro-sub-title mb-0" style="color:white; ">Geospatial Technologies</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Static Intro -->
+        </section>
+        <!-- End Intro -->
+
+
+        <!-- intro Preview Section -->
+        <div style="margin:0 auto; width:960px;">
+        <section id="intro-variation" class="section-padding">
+            <div class="demo-variation-inner">
+                <div class="container-fluid text-center">
+                    
+                    <h1 class="alt-title mb-45"><span class="page-title-underline">Personal Profile</span></h1>
+                </div>
+
+                <!-- Portfolio -->
+                <div class="container-fluid">
+                   <div>
+                    <a>    
+
+Ignacio Ponsoda Llorens, graduate in Geography at the University of Alicante with a mobility period at the Austral <br>
+University of Chile, nowadays enrolled at the <a href="http://mastergeotech.info/" target="new">Erasmus Mundus Project in Geospatial Technologies</a>.<br>
+I am interested in everything around GIS world, learning now about stadistics and IT applied to spatial science.<br>    
+
+                    </a>
+                </div>
+                &emsp;
+                
+                <div>
+                    <h1>Home Town</h1>
+                    <a>Always is important to remember where you came from,<br>
+                       in my case, I come from Alcoy, surrounded by mountains inland to Alicante province in Spain.<br></a>
+                       &emsp;
+                       
+                       <div class="container wow rotateInDownRight"> 
+                        <div id='mapid'></div>
+                    </div>
+                     
+                </div>
+            
+                <div>
+                        &emsp;
+                    <h1>Programming Skills</h1>
+                    <div class="wow bounceInRight">
+                    <div class="progress-bar horizontal"  style=" width: 50%;">
+                            <div class="progress-track" >
+                              <div class="progress-fill">
+                                <span>UML</span>
+                              </div>
+                            </div>
+                    </div>
+                    &emsp;
+                    <div class="progress-bar horizontal" style=" width: 75%;">
+                            <div class="progress-track">
+                              <div class="progress-fill">
+                                <span>SQL</span>
+                              </div>
+                            </div>
+                    </div>
+                    &emsp;
+                    <div class="progress-bar horizontal" style=" width: 75%;">
+                            <div class="progress-track">
+                              <div class="progress-fill">
+                                <span>JS</span>
+                              </div>
+                            </div>
+                    </div>
+                    &emsp;
+                    <div class="progress-bar horizontal"style=" width: 100%;">
+                            <div class="progress-track">
+                              <div class="progress-fill">
+                                <span>GIS</span>
+                              </div>
+                            </div>
+                    </div>
+                </div>
+                </div>
+                &emsp;
+                <div>
+                        <h1>My Stats</h1>
+                        
+    <div class="wrapper">
+        <div class="counter col_fourth wow bounceInUp">
+        <i class="fa fa-book fa-2x"></i>
+        <h2 class="timer count-title count-number" data-to="100" data-speed="1500">100</h2>
+       <p class="count-text ">Books Readed</p>
+    </div>
+
+    <div class="counter col_fourth wow bounceInDown">
+      <i class="fa fa-map-marker fa-2x"></i>
+      <h2 class="timer count-title count-number" data-to="10" data-speed="2000"></h2>
+      <p class="count-text ">Countries VIsited</p>
+    </div>
+
+    <div class="counter col_fourth wow bounceInUp">
+      <i class="fa fa-linkedin-square fa-2x"></i>
+      <h2 class="timer count-title count-number" data-to="101" data-speed="1500"></h2>
+      <p class="count-text ">Linkedin Conexions</p>
+    </div>
+
+    <div class="counter col_fourth end wow bounceInDown">
+      <i class="fa fa-university fa-2x"></i>
+      <h2 class="timer count-title count-number" data-to="4" data-speed="2000"></h2>
+      <p class="count-text ">Study Universities</p>
+    </div>
+</div>
+    </div>
+        &emsp;
+                    
+                        <!-- Preview Item -->
+                        
+                <!-- End Portfolio -->
+            
+        </section>
+        <!-- End intro Preview Section -->
+
+        <hr />
+
+        <!-- Home Preview Section -->
+        <section id="home-variation" class="section-padding">
+            <div class="demo-variation-inner">
+                <div class="container-fluid text-center">
+                    <h1 class="alt-title mb-45"><span class="page-title-underline">Work Experience</span></h1>
+                    <div class="row resume-items">
+                        <div class="col-md-6 col-sm-8 resume-item wow bounceInLeft animated" style="visibility: visible; animation-name: bounceInLeft">
+                            <h4>CREA 360</h4>
+                            <p><a href="http://crea360.es/" target="new">Crea 360</a> is a consultant company specialized in local development and European Projects.</p>
+                            <hr class="hidden-xs">
+                        </div>
+    
+                        <div class="col-md-5 col-sm-4 resume-place wow bounceInRight animated" style="visibility: visible; animation-name: bounceInRight;">
+                            <h4><i class="fa fa-pencil"></i> Spatial <br> Consultant</h4>
+                            <i class="fa fa-calendar"></i> 2017
+                            <hr class="visible-xs">
+                        </div>
+                        <div class="col-md-6  col-sm-8 resume-item wow bounceInUp animated" style="visibility: visible; animation-name: bounceInUp;">
+                            <h4>Red Cross</h4>
+                            <p>Volunteer at Red Cross Alcoy in the area of work.</p>
+                            <hr class="hidden-xs">
+                        </div>
+    
+                        <div class="col-md-5 col-sm-4 resume-place wow bounceInRight animated" style="visibility: visible; animation-name: bounceInRight;">
+                            <h4><i class="fa fa-heart"></i> Volunteer at <br>Red Cross</h4>
+                            <i class="fa fa-calendar"></i> 2015
+                            <hr class="visible-xs">
+                        </div>
+    
+                    </div>
+        
+                        </div>
+                </div>
+
+                <!-- Portfolio -->
+                
+                <!-- End Portfolio -->
+            </div>
+        </section>
+        <!-- End Home Preview Section -->
+
+        <hr />
+
+        <!-- Header Preview Section -->
+        <section id="header-variation" class="section-padding">
+            <div class="demo-variation-inner">
+                <div class="container-fluid text-center">
+                    <h1 class="alt-title mb-45"><span class="page-title-underline">Research</span></h1>
+                    <div class="row resume-items">
+    
+                        <div class="col-md-6 col-sm-8 resume-item wow bounceInUp animated" style="visibility: visible; animation-name: bounceInUp;">
+                            <h4>UACh</h4>
+                            <p>Thesis about Landslides at the South of Chile base on logistic regression.</p>
+                            <hr class="hidden-xs">
+                        </div>
+    
+                        <div class="col-md-5 col-sm-4 resume-place wow bounceInRight animated" style="visibility: visible; animation-name: bounceInRight;">
+                            <h4><i class="fa fa-book"></i> Logistic Regression <br> Applied to Landslides</h4>
+                            <i class="fa fa-calendar"></i> 2018
+                            <hr class="visible-xs">
+                        </div>
+                        <div class="col-md-6  col-sm-8 resume-item wow bounceInUp animated" style="visibility: visible; animation-name: bounceInUp;">
+                            <h4>Education Ministery of Spain</h4>
+                            <p>Spanish ministery of Education project about the usability of SIOSE.</p>
+                            <hr class="hidden-xs">
+                        </div>
+    
+                        <div class="col-md-5 col-sm-4 resume-place wow bounceInRight animated" style="visibility: visible; animation-name: bounceInRight;">
+                            <h4><i class="fa fa-book"></i> SIOSE Innova</h4>
+                            <i class="fa fa-calendar"></i> 2015
+                            <hr class="visible-xs">
+                        </div>
+    
+                    </div>
+                </div>
+
+                <!-- Portfolio -->
+                
+                <!-- End Portfolio -->
+            </div>
+        </section>
+        <!-- End Header Preview Section -->
+
+        <hr />
+
+        <!-- Extrapages Preview Section -->
+        <section id="external-pages" class="section-padding">
+            <div class="demo-variation-inner">
+                <div class="container-fluid text-center">
+                    <h1 class="alt-title mb-45"><span class="page-title-underline">Projects</span></h1>
+                </div>
+
+                <!-- Portfolio -->
+                <div class="container-fluid">
+                        <div class="text-center"> 
+                        <a>
+                                Here you can find examples to my work.<br> 
+                                This one is about the use of Story Maps from Esri technologies.<br>
+                                &emsp;
+                        </a>
+                    
+                           
+                        <figure><iframe src="https://uji.maps.arcgis.com/apps/MapTour/index.html?appid=805f70a6e2c64601ba16aca3bc952358" width="80%" height="700px"></iframe></figure>
+                    </div>
+                    <div class="rows portfolio-grid masonry">
+             </div>
+                        <!-- Preview Item -->
+                        
+                        <!-- End Preview Item -->
+
+                        <!-- Preview Item -->
+                        
+        <!-- End Extrapages Preview Section -->
+
+        <!-- Footer Section -->
+        <footer id="footer" class="footer gray-bg">
+            <div class="container text-center">
+                <ul class="social mb-60 wow fadeInUp" data-wow-duration="1.5s">
+                    <li>
+                                <a target="_blank" href="https://www.linkedin.com/in/ignponsoda"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/ignacio.ponsoda"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a>
+                    </li>
+                   
+                    <li>
+                        <a target="_blank" href="https://instagram.com/"><i class="fa fa-instagram"></i></a>
+                    </li>
+                </ul>
+                <address>
+                        <a class="icon-chat"></a><a href="mailto:ponsoda.nacho@gmail.com">ponsoda.nacho@gmail.com</a><br>
+                        <a class="icon-phone"></a>+34 654367290<br>
+                        <a class="icon-streetsign"></a>Carrer Poeta March I Borrás <br>
+                        <a class="icon-flag"></a>Castellón, Spain
+                        </address> 
+                <p class="copyright">
+                    <a class="copy-link scroll-top" href="">&copy; Apollo 2016</a><br />
+                    All Rights Reserved, Template by <a target="_blank" href="http://nileforest.com/"><b>nileforest</b></a>
+                </p>
+                
+            </div>
+            <div class="container text-left" >
+           
+            </div>
+        </footer>
+        <!-- End Footer Section -->
+   
+    </div>
+    <!-- End Page Wraper -->
+
+
+
+    <!-- JS Script -->
+    <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="js/plugins/jquery.easing.js" type="text/javascript"></script>
+    <script src="js/plugins/SmoothScroll.js" type="text/javascript"></script>
+    <script src="js/plugins/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="js/plugins/wow.min.js" type="text/javascript"></script>
+    <script>
+        new WOW().init();
+        </script>
+    <script src="js/plugins/isotope.pkgd.min.js" type="text/javascript"></script>
+    <script src="js/plugins/jquery.stellar.min.js" type="text/javascript"></script>
+    <script src="js/plugins/jquery.fitvids.js" type="text/javascript"></script>
+    <script src="js/plugins/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="js/plugins/jquery.appear.js" type="text/javascript"></script>
+    <script src="js/plugins/jquery.countTo.js" type="text/javascript"></script>
+    <script src="js/plugins/jquery.mb.YTPlayer.min.js" type="text/javascript"></script>
+    <script src="js/plugins/jquery.simple-text-rotator.min.js" type="text/javascript"></script>
+    <script src="js/plugins/jquery.backstretch.js" type="text/javascript"></script>
+    <script src="js/plugins/jquery.singlePageNav.min.js" type="text/javascript"></script>
+    <script src="js/theme.js" type="text/javascript"></script>
+
+    
+
+    <!--My stats-->
+    <script>(function ($) {
+        $.fn.countTo = function (options) {
+            options = options || {};
+            
+            return $(this).each(function () {
+                // set options for current element
+                var settings = $.extend({}, $.fn.countTo.defaults, {
+                    from:            $(this).data('from'),
+                    to:              $(this).data('to'),
+                    speed:           $(this).data('speed'),
+                    refreshInterval: $(this).data('refresh-interval'),
+                    decimals:        $(this).data('decimals')
+                }, options);
+                
+                // how many times to update the value, and how much to increment the value on each update
+                var loops = Math.ceil(settings.speed / settings.refreshInterval),
+                    increment = (settings.to - settings.from) / loops;
+                
+                // references & variables that will change with each update
+                var self = this,
+                    $self = $(this),
+                    loopCount = 0,
+                    value = settings.from,
+                    data = $self.data('countTo') || {};
+                
+                $self.data('countTo', data);
+                
+                // if an existing interval can be found, clear it first
+                if (data.interval) {
+                    clearInterval(data.interval);
+                }
+                data.interval = setInterval(updateTimer, settings.refreshInterval);
+                
+                // initialize the element with the starting value
+                render(value);
+                
+                function updateTimer() {
+                    value += increment;
+                    loopCount++;
+                    
+                    render(value);
+                    
+                    if (typeof(settings.onUpdate) == 'function') {
+                        settings.onUpdate.call(self, value);
+                    }
+                    
+                    if (loopCount >= loops) {
+                        // remove the interval
+                        $self.removeData('countTo');
+                        clearInterval(data.interval);
+                        value = settings.to;
+                        
+                        if (typeof(settings.onComplete) == 'function') {
+                            settings.onComplete.call(self, value);
+                        }
+                    }
+                }
+                
+                function render(value) {
+                    var formattedValue = settings.formatter.call(self, value, settings);
+                    $self.html(formattedValue);
+                }
+            });
+        };
+        
+        $.fn.countTo.defaults = {
+            from: 0,               // the number the element should start at
+            to: 0,                 // the number the element should end at
+            speed: 1000,           // how long it should take to count between the target numbers
+            refreshInterval: 100,  // how often the element should be updated
+            decimals: 0,           // the number of decimal places to show
+            formatter: formatter,  // handler for formatting the value before rendering
+            onUpdate: null,        // callback method for every time the element is updated
+            onComplete: null       // callback method for when the element finishes updating
+        };
+        
+        function formatter(value, settings) {
+            return value.toFixed(settings.decimals);
+        }
+    }(jQuery));
+    
+    jQuery(function ($) {
+      // custom formatting example
+      $('.count-number').data('countToOptions', {
+        formatter: function (value, options) {
+          return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+        }
+      });
+      
+      // start all the timers
+      $('.timer').each(count);  
+      
+      function count(options) {
+        var $this = $(this);
+        options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+        $this.countTo(options);
+      }
+    });
+    </script>
+
+
+<script>
+        $(document).ready(function(){
+         var mymap = L.map('mapid').setView([38.695823, -0.474983], 13);
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                maxZoom: 18,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                id: 'mapbox.streets'
+                }).addTo(mymap);
+                var marker = L.marker([38.70, -0.474983]).addTo(mymap);
+        })
+
+        
+
+        </script>
+
+        
+
+
+
+</html>
